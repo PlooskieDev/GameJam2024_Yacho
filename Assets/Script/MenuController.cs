@@ -1,0 +1,27 @@
+using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class MenuController : MonoBehaviour
+{
+    [TextArea(1, 5)]
+    public string Notes = "A controller that handles the button clicks";
+
+    //--------------------------------------------------------------------------------------------------------------------------
+
+    public void Play()
+    {
+        SceneManager.LoadScene(Helpers.GameSceneName);
+    }
+
+    public void Settings()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Quit()
+    {
+        throw new NotImplementedException();
+    }
+
+}//END
