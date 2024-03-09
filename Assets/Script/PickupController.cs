@@ -11,7 +11,7 @@ public class PickupController : MonoBehaviour {
 
     private ObjectState state;
     public bool hasFullHands = false;
-    public GameObject pickupItem;
+    [HideInInspector] public GameObject pickupItem;
     private EngineAssembly engine;
 
     private void Start() {
