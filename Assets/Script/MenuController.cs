@@ -2,26 +2,29 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuController : MonoBehaviour
+namespace Script
 {
-    [TextArea(1, 5)]
-    public string Notes = "A controller that handles the button clicks";
-
-    //--------------------------------------------------------------------------------------------------------------------------
-
-    public void Play()
+    public class MenuController : MonoBehaviour
     {
-        SceneManager.LoadScene(Helpers.GameSceneName);
-    }
+        [TextArea(1, 5)]
+        public string Notes = "A controller that handles the button clicks";
 
-    public void Settings()
-    {
-        throw new NotImplementedException();
-    }
+        //--------------------------------------------------------------------------------------------------------------------------
 
-    public void Quit()
-    {
-        throw new NotImplementedException();
-    }
+        public void Play()
+        {
+            SceneManager.LoadScene(Helpers.GameSceneName);
+        }
 
+        public void Settings()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Quit()
+        {
+            throw new NotImplementedException();
+        }
+
+    }
 }//END
