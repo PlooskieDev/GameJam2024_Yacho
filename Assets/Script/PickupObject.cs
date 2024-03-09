@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Script
 {
-    public class PickubObject : MonoBehaviour
+    public class PickupObject : MonoBehaviour
     {
         //Add comment to a script
         [TextArea(1, 5)] public string Notes = "Comment";
