@@ -19,11 +19,12 @@ namespace Script
         public void Settings()
         {
             throw new NotImplementedException();
+            //Lol to je na hrníček
         }
 
         public void Quit()
         {
-            throw new NotImplementedException();
+            Application.Quit();
         }
     }
 }//END
