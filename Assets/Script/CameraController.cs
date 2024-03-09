@@ -9,7 +9,6 @@ public class CameraControl : MonoBehaviour {
     //--------------------------------------------------------------------------------------------------------------------------
 
     public float rotationSpeed = 100f;
-    public float movementSpeed = 5f;
 
     private Rigidbody rb;
     private bool isRotating = false;
