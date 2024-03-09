@@ -16,7 +16,7 @@ namespace Script
         private ObjectState state;
         public bool hasFullHands = false;
         [HideInInspector] public GameObject pickupItem;
-        private EngineAssembly engine;
+        private Facility facility;
 
         private void Update()
         {
@@ -72,7 +72,7 @@ namespace Script
 
         private void PlaceItem()
         {
-            if (!engine.PlaceObject(pickupItem))
+            if (!facility.Assemble(pickupItem))
             {
                 CheckFullHands();
                 return;
@@ -89,7 +89,7 @@ namespace Script
         private void StartEngine()
         {
             Debug.Log("Starting engine");
-            engine.StartEngine();
+            facility.FacilityStart();
         }
 
         public void Highlight_On(GameObject item)
@@ -106,10 +106,10 @@ namespace Script
             state = ObjectState.NULL;
         }
 
-        public void SetState(EngineAssembly engine, ObjectState state)
+        public void SetState(Facility facility, ObjectState state)
         {
             this.state = state;
-            this.engine = engine;
+            this.facility = facility;
         }
 
         private void CheckFullHands()
