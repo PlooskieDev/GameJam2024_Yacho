@@ -16,7 +16,6 @@ namespace Script {
 
         private Rigidbody rb;
         private bool isGrounded = false;
-        private bool isMoving = false;
 
         void Start() {
             rb = GetComponent<Rigidbody>();
