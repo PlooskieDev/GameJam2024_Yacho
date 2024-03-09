@@ -13,7 +13,7 @@ namespace Script
 
         public GameObject hand;
 
-        private ObjectState state;
+        public ObjectState state;
         public bool hasFullHands = false;
         [HideInInspector] public GameObject pickupItem;
         private Facility facility;

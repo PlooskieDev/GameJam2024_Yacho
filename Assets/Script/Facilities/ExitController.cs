@@ -21,7 +21,7 @@ namespace Script.Facilities
         {
             if (!objectPlaces.Any()) return false;
             var place = objectPlaces.First();
-            if (place.name == objectToPlace.name)
+            if (place.name.Contains(objectToPlace.name))
             {
                 objectToPlace.transform.position = place.transform.position;
                 objectToPlace.transform.rotation = place.transform.rotation;
