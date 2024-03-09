@@ -6,19 +6,16 @@ using UnityEngine.Events;
 
 namespace Script.Facilities
 {
-    public class EngineAssembly : MonoBehaviour
+    public class EngineAssembly : Facility
     {
         //Add comment to a script
         [TextArea(1, 5)] public string Notes = "Comment";
 
         //--------------------------------------------------------------------------------------------------------------------------
 
-        public List<GameObject> objectPlaces;
         public static UnityAction OnPowerOn;
 
         private Dictionary<Parts, EnginePart> parts = new Dictionary<Parts, EnginePart>();
-
-        PickupController pickupController;
 
         private void Start()
         {
@@ -34,31 +31,7 @@ namespace Script.Facilities
             }
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.tag.Equals(GameTags.PLAYER))
-            {
-                pickupController = other.GetComponent<PickupController>();
-                if (pickupController.hasFullHands && pickupController.pickupItem != null)
-                    pickupController.SetState(this, ObjectState.PLACE);
-                else if (!pickupController.hasFullHands)
-                    pickupController.SetState(this, ObjectState.START_ENGINE);
-            }
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.tag.Equals(GameTags.PLAYER))
-            {
-                pickupController = other.GetComponent<PickupController>();
-                if (pickupController.hasFullHands && pickupController.pickupItem != null)
-                    pickupController.SetState(this, ObjectState.RELEASE);
-                else if (!pickupController.hasFullHands)
-                    pickupController.SetState(this, ObjectState.NULL);
-            }
-        }
-
-        public bool PlaceObject(GameObject objectToPlace)
+        public override bool Assemble(GameObject objectToPlace)
         {
             var place = parts.FirstOrDefault(part => part.Value.Name.Contains(objectToPlace.name)).Value;
             if (place != null)
@@ -72,7 +45,7 @@ namespace Script.Facilities
             return false;
         }
 
-        public void StartEngine()
+        public override void FacilityStart()
         {
             if (!parts.GetValueOrDefault(Parts.Button_place).IsPresent)
             {
