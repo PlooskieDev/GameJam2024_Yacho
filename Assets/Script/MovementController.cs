@@ -1,7 +1,6 @@
 using UnityEngine;
 
-namespace Script
-{
+namespace Script {
     [RequireComponent(typeof(Rigidbody))]
     public class MovementController : MonoBehaviour {
         //Add comment to a script
@@ -12,9 +11,12 @@ namespace Script
 
         public float moveSpeed = 5f;
         public float jumpForce = 10f;
+        public float playerRotationSpeed = 10f;
+        public GameObject playerObject;
 
         private Rigidbody rb;
         private bool isGrounded = false;
+        private bool isMoving = false;
 
         void Start() {
             rb = GetComponent<Rigidbody>();
@@ -31,6 +33,8 @@ namespace Script
                                         transform.right * Input.GetAxis("Horizontal");
 
             rb.velocity = movementDirection * moveSpeed;
+            if (movementDirection.magnitude > 0)
+                playerObject.transform.rotation = Quaternion.Slerp(playerObject.transform.rotation, Quaternion.LookRotation(movementDirection), Time.deltaTime * playerRotationSpeed);
         }
 
         private void Jump() {
