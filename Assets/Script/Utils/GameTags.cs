@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public class GameTags : MonoBehaviour {
+public class GameTags {
 
     public static string GROUND = "Ground";
     public static string PICKABLE = "Pickable";
