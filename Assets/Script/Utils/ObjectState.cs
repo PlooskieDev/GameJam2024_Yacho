@@ -1,5 +1,13 @@
-public enum ObjectState {
+namespace Script.Utils
+{
+    public enum ObjectState
+    {
 
-    NULL, RELEASE, PICKUP, PLACE, START_ENGINE
+        NULL,
+        RELEASE,
+        PICKUP,
+        PLACE,
+        START_ENGINE
 
-}//END
+    } //END
+}

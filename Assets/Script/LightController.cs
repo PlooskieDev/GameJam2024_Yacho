@@ -1,21 +1,25 @@
 using UnityEngine;
 
-public class LightController : MonoBehaviour {
-    //Add comment to a script
-    [TextArea(1, 5)]
-    public string Notes = "Comment";
+namespace Script
+{
+    public class LightController : MonoBehaviour
+    {
+        //Add comment to a script
+        [TextArea(1, 5)] public string Notes = "Comment";
 
-    [SerializeField]
-    Light light;
+        [SerializeField] Light light;
 
-    //--------------------------------------------------------------------------------------------------------------------------
+        //--------------------------------------------------------------------------------------------------------------------------
 
-    private void Start() {
+        private void Start()
+        {
 
-    }
+        }
 
-    private void Update() {
-        
-    }
+        private void Update()
+        {
 
-}//END
+        }
+
+    } //END
+}
