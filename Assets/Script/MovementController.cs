@@ -16,6 +16,7 @@ namespace Script {
         public float maxDistance = 100f;
         public GameObject playerObject;
         public WarpController warpController;
+        public Animator animator;
 
         private bool canMove = true;
         private Rigidbody rb;
@@ -29,7 +30,9 @@ namespace Script {
         void Update() {
             if (canMove) {
                 Move();
-                Jump();
+                if (isGrounded && Input.GetKeyDown(KeyCode.Space)) {
+                    StartCoroutine(Jump());
+                }
             }
         }
 
@@ -41,9 +44,8 @@ namespace Script {
             Vector3 movementDirection = transform.forward * Input.GetAxis("Vertical") +
                                         transform.right * Input.GetAxis("Horizontal");
 
-            //float distanceThisFrame = movementDirection.magnitude * moveSpeed * Time.deltaTime;
-            //totalDistance += distanceThisFrame;
             rb.velocity = movementDirection * moveSpeed;
+            animator.SetFloat("Speed", movementDirection.magnitude);
 
             if (movementDirection.magnitude > 0) {
                 playerObject.transform.rotation = Quaternion.Slerp(playerObject.transform.rotation, Quaternion.LookRotation(movementDirection), Time.deltaTime * playerRotationSpeed);
@@ -64,22 +66,18 @@ namespace Script {
             canMove = true;
         }
 
-        private void Jump() {
-            if (isGrounded && Input.GetKeyDown(KeyCode.Space)) {
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                isGrounded = false;
-            }
+        private IEnumerator Jump() {
+            animator.SetBool("Jump", true);
+            yield return new WaitForSeconds(.3f);
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
         }
 
         void OnCollisionEnter(Collision collision) {
             if (collision.collider.CompareTag(GameTags.GROUND)) {
                 isGrounded = true;
+                animator.SetBool("Jump", false);
             }
-        }
-
-        private void DoSomething() {
-            // Perform your action here after moving the specified distance
-            Debug.Log("Player has moved " + 10 + " units.");
         }
 
     }
