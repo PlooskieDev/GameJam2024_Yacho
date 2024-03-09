@@ -15,6 +15,7 @@ namespace Script
 
         public ObjectState state;
         public bool hasFullHands = false;
+        public float outlineWidth = 1;
         [HideInInspector] public GameObject pickupItem;
         private Facility facility;
 
@@ -96,7 +97,7 @@ namespace Script
         {
             pickupItem = item;
             state = ObjectState.PICKUP;
-            pickupItem.GetComponent<Outline>().OutlineWidth = 10;
+            pickupItem.GetComponent<Outline>().OutlineWidth = outlineWidth;
         }
 
         public void Highlight_Off(GameObject item)
