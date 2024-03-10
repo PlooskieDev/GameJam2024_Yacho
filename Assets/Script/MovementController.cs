@@ -22,6 +22,7 @@ namespace Script {
         private bool canMove = true;
         private bool isGrounded = false;
         private float totalDistance;
+        private Coroutine jump;
 
         void Start() {
             rb = GetComponent<Rigidbody>();
@@ -30,8 +31,8 @@ namespace Script {
         void Update() {
             if (canMove) {
                 Move();
-                if (isGrounded && Input.GetKeyDown(KeyCode.Space)) {
-                    StartCoroutine(Jump());
+                if (isGrounded && Input.GetKeyDown(KeyCode.Space) && jump is null) {
+                    jump = StartCoroutine(Jump());
                 }
             }
         }
@@ -73,6 +74,7 @@ namespace Script {
             yield return new WaitForSeconds(.3f);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isGrounded = false;
+            jump = null;
         }
 
         void OnCollisionEnter(Collision collision) {

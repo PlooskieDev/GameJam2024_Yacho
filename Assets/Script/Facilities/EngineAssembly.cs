@@ -19,10 +19,13 @@ namespace Script.Facilities {
 
         private Dictionary<Parts, EnginePart> parts = new Dictionary<Parts, EnginePart>();
 
-        private void Start() {
-            foreach (var place in objectPlaces) {
-                parts.Add((Parts)System.Enum.Parse(typeof(Parts), place.name),
-                    new EnginePart() {
+        private void Start()
+        {
+            foreach (var place in objectPlaces)
+            {
+                parts.Add((Parts)System.Enum.Parse(typeof(Parts), place.name.Substring(2)),
+                    new EnginePart()
+                    {
                         Name = place.name,
                         Transform = place.transform,
                         IsPresent = false,
