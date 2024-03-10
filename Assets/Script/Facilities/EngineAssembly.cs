@@ -20,7 +20,7 @@ namespace Script.Facilities
         {
             foreach (var place in objectPlaces)
             {
-                parts.Add((Parts)System.Enum.Parse(typeof(Parts), place.name),
+                parts.Add((Parts)System.Enum.Parse(typeof(Parts), place.name.Substring(2)),
                     new EnginePart()
                     {
                         Name = place.name,

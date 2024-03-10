@@ -7,9 +7,9 @@ public class WarpController : MonoBehaviour {
 
     //--------------------------------------------------------------------------------------------------------------------------
 
-    public float distance = 100f;
+    public float mapDistance = 100f;
+    public float maxDistance = 100f;
 
-    private enum Reality { CYBER_PUNK, STEAM_PUNK }
     private Reality reality = Reality.STEAM_PUNK;
 
     public void Warp() {
@@ -24,8 +24,14 @@ public class WarpController : MonoBehaviour {
     }
 
     private void Transform(Vector3 direction, Reality reality) {
-        transform.position += direction * distance;
+        transform.position += direction * mapDistance;
         this.reality = reality;
     }
 
+    public bool IsSteamPunk() {
+        return reality.Equals(Reality.STEAM_PUNK);
+    }
+
 }//END
+
+public enum Reality { CYBER_PUNK, STEAM_PUNK }
