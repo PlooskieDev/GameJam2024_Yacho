@@ -15,6 +15,8 @@ namespace Script
         private Rigidbody rb;
         private bool isRotating = false;
 
+        public bool canRotate = true;
+
         void Start()
         {
             rb = GetComponent<Rigidbody>();
@@ -23,6 +25,8 @@ namespace Script
 
         void Update()
         {
+            if (!canRotate) { return; }
+
             if (Input.GetKeyDown(KeyCode.Q) && !isRotating)
             {
                 StartCoroutine(RotateObject(90));

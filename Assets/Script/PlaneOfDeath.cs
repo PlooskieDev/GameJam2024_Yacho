@@ -9,12 +9,11 @@ public class PlaneOfDeath : MonoBehaviour {
 
     //--------------------------------------------------------------------------------------------------------------------------
 
+    public DeathController deathController;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag.Equals(GameTags.PLAYER))
-        {
-            SceneManager.LoadScene(Helpers.MenuSceneName);
-        }
+        deathController.PlayerDied();
     }
 
 }//END

@@ -19,7 +19,7 @@ namespace Script {
         public Animator animator;
         public Rigidbody rb;
 
-        private bool canMove = true;
+        public bool canMove = true;
         private bool isGrounded = false;
         private float totalDistance;
         private Coroutine jump;
