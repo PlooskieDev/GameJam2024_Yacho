@@ -11,6 +11,8 @@ namespace Script
 
         //--------------------------------------------------------------------------------------------------------------------------
 
+        public AudioSource pickupAS;
+
         public GameObject hand;
 
         public ObjectState state;
@@ -51,6 +53,7 @@ namespace Script
 
         private void PickupItem()
         {
+            pickupAS.Play();
             pickupItem.transform.position = Vector3.Lerp(pickupItem.transform.position, hand.transform.position, 5);
             pickupItem.transform.parent = hand.transform;
             pickupItem.GetComponent<Rigidbody>().isKinematic = true;

@@ -1848,6 +1848,37 @@ Transform:
   - {fileID: 4228691970840306762}
   m_Father: {fileID: 5625653893725093531}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4532641510584649991
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4942095232982893671}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4942095232982893671
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4532641510584649991}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3167678064006330344}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5096445503739024717
 GameObject:
   m_ObjectHideFlags: 0
@@ -2388,6 +2419,7 @@ Transform:
   m_Children:
   - {fileID: 4674153419988962155}
   - {fileID: 5213506162015022287}
+  - {fileID: 4942095232982893671}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
 --- !u!136 &5628070274932859799
@@ -2429,7 +2461,7 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 20
   playerRotationSpeed: 10
-  maxDistance: 1000
+  warpingTime: 2
   playerObject: {fileID: 359160005902432395}
   warpController: {fileID: 3079974487582736422}
   animator: {fileID: 5515156854908096040}
@@ -2549,10 +2581,15 @@ MonoBehaviour:
   Notes: Comment
   camera: {fileID: 4674153419988962155}
   player: {fileID: 5213506162015022287}
-  transparentWall: {fileID: 2100000, guid: 4e1b563bbf81f964c919e1c49086b109, type: 2}
-  transparentBlack: {fileID: 2100000, guid: 868d2c17905730e4790d50c0c703498f, type: 2}
-  solidWall: {fileID: 2100000, guid: 6bcaa8d67eee62e4ca5ca95ff9605139, type: 2}
-  solidBlack: {fileID: 2100000, guid: e72059b3e24ae0f46acfaaaa506c829d, type: 2}
+  warpController: {fileID: 0}
+  transparentWall_SP: {fileID: 0}
+  transparentBlack_SP: {fileID: 0}
+  solidWall_SP: {fileID: 0}
+  solidBlack_SP: {fileID: 0}
+  transparentWall_CP: {fileID: 0}
+  transparentBlack_CP: {fileID: 0}
+  solidWall_CP: {fileID: 0}
+  solidBlack_CP: {fileID: 0}
   wallLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -2571,7 +2608,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Notes: Warp between REALITIES
-  distance: 100
+  mapDistance: 100
+  maxDistance: 100
+  reality: 1
 --- !u!1 &6439134258908085478
 GameObject:
   m_ObjectHideFlags: 0

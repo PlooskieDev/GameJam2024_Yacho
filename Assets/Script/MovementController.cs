@@ -17,9 +17,9 @@ namespace Script {
         public GameObject playerObject;
         public WarpController warpController;
         public Animator animator;
+        public Rigidbody rb;
 
         private bool canMove = true;
-        private Rigidbody rb;
         private bool isGrounded = false;
         private float totalDistance;
 
