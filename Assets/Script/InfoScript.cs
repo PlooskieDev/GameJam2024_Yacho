@@ -6,6 +6,9 @@ public class InfoScript : MonoBehaviour
 {
     [SerializeField] private Canvas canvas;
 
+    public GameObject panel;
+
+
     // Update is called once per frame
     void Start()
     {
@@ -14,6 +17,6 @@ public class InfoScript : MonoBehaviour
     
     private IEnumerator HideCanvas() {
         yield return new WaitForSeconds(15f);
-        canvas.enabled = false;
+        panel.SetActive(false);
     }
 }

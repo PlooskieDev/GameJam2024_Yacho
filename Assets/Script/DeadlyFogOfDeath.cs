@@ -15,6 +15,6 @@ public class DeadlyFogOfDeath : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        deathController.PlayerDied();
+        SceneManager.LoadScene(Helpers.MenuSceneName);
     }
 }

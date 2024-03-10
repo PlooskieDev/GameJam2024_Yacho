@@ -10,6 +10,7 @@ public class DeathController : MonoBehaviour {
     //--------------------------------------------------------------------------------------------------------------------------
 
     [SerializeField] private GameObject deathPanel;
+    [SerializeField] private GameObject infoPanel;
     [SerializeField] private MovementController movementController;
     [SerializeField] private CameraControl cameracontroller;
     [SerializeField] private AudioSource deathSound;
@@ -17,6 +18,7 @@ public class DeathController : MonoBehaviour {
     public void PlayerDied()
     {
         deathPanel.SetActive(true);
+        //infoPanel.SetActive(false);
         movementController.canMove = false;
         cameracontroller.canRotate = false;
         deathSound.Play();
