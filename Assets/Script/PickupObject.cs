@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Script
 {
+    [RequireComponent(typeof(Outline))]
     public class PickupObject : MonoBehaviour
     {
         //Add comment to a script
