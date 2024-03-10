@@ -38,7 +38,7 @@ public class AudioController : MonoBehaviour {
     }
 
     private void Update() {
-        if (animator.GetFloat("Speed") > 0 && !animator.GetBool("Jump") && running == null) {
+        if (animator.GetFloat("Speed") > 0 && !animator.GetBool("Jump") && running == null && !animator.GetBool("Warp")) {
             running = StartCoroutine(PlayRandomFootStepSound());
         }
     }
