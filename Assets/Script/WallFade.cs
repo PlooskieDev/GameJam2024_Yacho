@@ -10,9 +10,20 @@ public class WallFade : MonoBehaviour {
 
     public Transform camera;
     public Transform player;
+    public WarpController warpController;
 
-    public Material transparentWall, transparentBlack;
-    public Material solidWall, solidBlack;
+    [Header("SP")]
+    public Material transparentWall_SP;
+    public Material transparentBlack_SP;
+    public Material solidWall_SP;
+    public Material solidBlack_SP;
+
+    [Header("CP")]
+    public Material transparentWall_CP;
+    public Material transparentBlack_CP;
+    public Material solidWall_CP;
+    public Material solidBlack_CP;
+
     public LayerMask wallLayer;
 
     public float radius = 2f;
@@ -63,13 +74,13 @@ public class WallFade : MonoBehaviour {
 
     private void SetObjectTransparent(GameObject obj) {
         if (obj.TryGetComponent(out MeshRenderer mesh)) {
-            mesh.materials = new Material[] { transparentBlack, transparentWall };
+            mesh.materials = SelectMaterial(true);
         }
     }
 
     private void SetObjectSolid(GameObject obj) {
         if (obj.TryGetComponent(out MeshRenderer mesh)) {
-            mesh.materials = new Material[] { solidBlack, solidWall };
+            mesh.materials = SelectMaterial(false);
         }
     }
 
@@ -79,6 +90,20 @@ public class WallFade : MonoBehaviour {
 
         return Physics.CapsuleCastAll(camera.position, player.position, radius, direction, distance, wallLayer);
 
+    }
+
+    private Material[] SelectMaterial(bool transparent) {
+        if (warpController.reality.Equals(Reality.CYBER_PUNK)) {
+            if (transparent)
+                return new Material[] { transparentBlack_CP, transparentWall_CP };
+            else
+                return new Material[] { solidBlack_CP, solidWall_CP };
+        } else {
+            if (transparent)
+                return new Material[] { transparentBlack_SP, transparentWall_SP };
+            else
+                return new Material[] { solidBlack_SP, solidWall_SP };
+        }
     }
 
 }//END

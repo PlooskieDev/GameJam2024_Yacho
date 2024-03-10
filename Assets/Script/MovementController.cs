@@ -13,7 +13,7 @@ namespace Script {
         public float moveSpeed = 5f;
         public float jumpForce = 10f;
         public float playerRotationSpeed = 10f;
-        public float maxDistance = 100f;
+        public float warpingTime = 2f;
         public GameObject playerObject;
         public WarpController warpController;
         public Animator animator;
@@ -51,7 +51,7 @@ namespace Script {
                 playerObject.transform.rotation = Quaternion.Slerp(playerObject.transform.rotation, Quaternion.LookRotation(movementDirection), Time.deltaTime * playerRotationSpeed);
             }
 
-            if (totalDistance >= maxDistance) {
+            if (totalDistance >= warpController.maxDistance) {
                 canMove = false;
                 totalDistance = 0f;
                 StartCoroutine(Warp());
@@ -60,7 +60,9 @@ namespace Script {
 
         private IEnumerator Warp() {
             Debug.Log("WARPING!!!");
-            yield return new WaitForSeconds(2);
+            animator.SetBool("Warp", true);
+            yield return new WaitForSeconds(warpingTime);
+            animator.SetBool("Warp", false);
             Debug.Log("REALITY CHANGED!!!");
             warpController.Warp();
             canMove = true;
