@@ -92,17 +92,13 @@ public class WallFade : MonoBehaviour {
 
     }
 
-    private Material[] SelectMaterial(bool transparent)
-    {
-        if (warpController.IsSteamPunk())
-        {
+    private Material[] SelectMaterial(bool transparent) {
+        if (warpController.IsSteamPunk()) {
             if (transparent)
                 return new Material[] { transparentBlack_SP, transparentWall_SP };
             else
                 return new Material[] { solidBlack_SP, solidWall_SP };
-        }
-        else
-        {
+        } else {
             if (transparent)
                 return new Material[] { transparentBlack_CP, transparentWall_CP };
             else
